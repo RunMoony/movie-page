@@ -3,13 +3,20 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 export default function Home({ results }) {
   const router = useRouter();
+  const onClick = (id, title) => {
+    router.push(`/movies/${title}/${id}`);
+  };
   return (
     <div className='container'>
       <Seo title='Home' />
       {results?.map((movie) => (
-        <div className='movie' key={movie.id}>
+        <div
+          className='movie'
+          onClick={() => onClick(movie.id, movie.title)}
+          key={movie.id}
+        >
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h4>평점 : {movie.vote_average}</h4>
+          <h4>평점 : {movie.vote_average} / 10</h4>
           <h4>개봉일자 : {movie.release_date}</h4>
         </div>
       ))}
