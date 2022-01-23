@@ -20,7 +20,9 @@ export default function Detail({ params, details }) {
         </div>
         <p> &lt;장르&gt;</p>
         {details.genres.map((genres) => (
-          <p key={genres.id}>{genres.name}</p>
+          <p className='genres' key={genres.id}>
+            {genres.name},
+          </p>
         ))}
       </div>
       <style jsx>{`
@@ -61,6 +63,10 @@ export default function Detail({ params, details }) {
         }
         p {
           color: white;
+        }
+        .genres {
+          float: left;
+          margin-top: -5px;
         }
       `}</style>
     </div>
