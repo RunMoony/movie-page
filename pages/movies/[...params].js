@@ -12,36 +12,32 @@ export default function Detail({ params, details }) {
             src={`https://image.tmdb.org/t/p/w500${details.poster_path}`}
           />
         </div>
-        <div>
-          <h3>{details.title}</h3>
-          <h5>{details.original_title}</h5>
-          <p> &lt;영화줄거리 &gt;</p>
-          <p>{details.overview}</p>
-        </div>
+        <h3>{details.title}</h3>
+        <h5>{details.original_title}</h5>
+        <p> &lt;영화줄거리 &gt;</p>
+        <p>{details.overview}</p>
         <p> &lt;장르&gt;</p>
-        {details.genres.map((genres) => (
-          <p className='genres' key={genres.id}>
-            {genres.name},
-          </p>
-        ))}
+        <p>
+          {details.genres.map((genre) => genre.name)
+            ? details.genres.map((genre) => genre.name).join(", ")
+            : "작성된 장르가 없습니다."}
+        </p>
+        <p> &lt;제조국&gt;</p>
+        <p>
+          {details.production_countries.map((country) => country.name)
+            ? details.production_countries
+                .map((country) => country.name)
+                .join(" / ")
+            : "작성된 제조국이 없습니다."}
+        </p>
+        <div className='credit'>
+          <h3>출연배우</h3>
+        </div>
       </div>
       <style jsx>{`
         .container {
           margin: 15px 50px 50px 50px;
         }
-        /*.backgroundImage {
-          top: 0;
-          left: 0;
-          display: block;
-          //width: 100vw;
-          //height: 100vh;
-          background-image: url("https://image.tmdb.org/t/p/w500${details.backdrop_path}");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          opacity: 0.5;
-          z-index: -1;
-        }*/
         .poster {
           display: block;
           margin: 0px auto;
@@ -63,10 +59,10 @@ export default function Detail({ params, details }) {
         }
         p {
           color: white;
+          line-height: 30px;
         }
-        .genres {
-          float: left;
-          margin-top: -5px;
+        .credit {
+          margin-top: 50px;
         }
       `}</style>
     </div>
@@ -77,10 +73,15 @@ export async function getServerSideProps({ params: { params } }) {
   const details = await (
     await fetch(`http://localhost:3000/api/movies/${params[1]}`)
   ).json();
+  const actors = await (
+    await fetch(`http://localhost:3000/api/movies/${params[1]}/credits`)
+  ).json();
+  console.log(actors.cast);
   return {
     props: {
       params,
       details,
+      actors,
     },
   };
 }
