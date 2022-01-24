@@ -5,7 +5,7 @@ module.exports = {
     return [
       {
         source: "/api/movies",
-        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR`,
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ko-KR&region=KR`,
       },
       {
         source: "/api/movies/:id",
@@ -14,6 +14,10 @@ module.exports = {
       {
         source: "/api/movies/:id/credits",
         destination: `https://api.themoviedb.org/3/movie/:id/credits?api_key=${API_KEY}&language=ko-KR`,
+      },
+      {
+        source: "/api/movies/:id/videos",
+        destination: `https://api.themoviedb.org/3/movie/:id/videos?api_key=${API_KEY}&language=ko-KR`,
       },
     ];
   },

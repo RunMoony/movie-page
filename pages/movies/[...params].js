@@ -1,6 +1,6 @@
 import Seo from "../../components/Seo";
 
-export default function Detail({ params, details, actors }) {
+export default function Detail({ params, details, actors, videos }) {
   const [title] = params || [];
   return (
     <div>
@@ -53,6 +53,24 @@ export default function Detail({ params, details, actors }) {
             ))}
           </ul>
         </div>
+        <div className='video'>
+          <h3>무비클립</h3>
+          <ul>
+            {videos.results.map((video) => (
+              <li key={video.id}>
+                <div>
+                  <iframe
+                    title={video.key}
+                    src={`https://www.youtube.com/embed/${video.key}`}
+                    frameBorder='0'
+                    scrolling='no'
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <style jsx>{`
         .container {
@@ -98,7 +116,7 @@ export default function Detail({ params, details, actors }) {
         .name {
           margin-top: -15px;
         }
-        .credit {
+        .credit .video {
           margin-top: 50px;
         }
         .profile {
@@ -119,11 +137,15 @@ export async function getServerSideProps({ params: { params } }) {
   const actors = await (
     await fetch(`http://localhost:3000/api/movies/${params[1]}/credits`)
   ).json();
+  const videos = await (
+    await fetch(`http://localhost:3000/api/movies/${params[1]}/videos`)
+  ).json();
   return {
     props: {
       params,
       details,
       actors,
+      videos,
     },
   };
 }
