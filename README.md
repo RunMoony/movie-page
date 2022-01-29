@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 영화정보사이트
+## 사용 기술
 
-## Getting Started
+* [X] NEXT-JS
 
-First, run the development server:
+## 기능 목록
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+* [X] 영화평점
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* [X] 인기영화 페이지
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+* [X] 현재상영중인영화 페이지
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* [X] 개봉예정인영화 페이지
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+* [X] 영화포스터 클릭 시 detail페이지로 이동
 
-## Learn More
+* [X] detail페이지 구성 : 영화줄거리, 제조국, 출연배우, 무비클립 등
 
-To learn more about Next.js, take a look at the following resources:
+## NEXT-JS를 선택한 이유
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* [x] url로 각 영화의 detail 페이지로 직접 접근을 하고싶어서 도입하게되었다.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+* [x] 또한 이 정보들이 검색엔진에 노출되기위해선 CSR보다 SSR이 SEO에 더 적합하다고 느꼇다. 
 
-## Deploy on Vercel
+* [x] 빠른 렌더링 속도
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* [x] REACT로만 개발을 했을 시, react-router-dom에서 하나하나 명시해야 했던 라우팅이 불편(?)했는데 NEXT-JS   에선 pages 폴더 밑에 폴더 및 파일을 구성하면 자동으로 라우팅 처리가 되어 매우 편리하다고 생각했다.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 스크린샷
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/77433616/151647758-c3d90e8e-c18c-48f4-bf80-9d27639719e1.gif)
